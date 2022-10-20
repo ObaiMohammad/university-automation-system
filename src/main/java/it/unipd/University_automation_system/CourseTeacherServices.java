@@ -12,15 +12,28 @@ public class CourseTeacherServices {
 			
 		}
 		
-		public static void searchTeacher(Course course) {
-			int id = course.getId();
-			System.out.println("the student enroled in the course: "+course.toString()+" are ");
+		public static List <Teacher> findTeacherByCourses(int courseId) {
+			
+			List<Teacher> designateTeacher = new ArrayList<>();
 			for (int i=0; i <courseTeacherList.size();i++ ) {
-				if (courseTeacherList.get(i).getCourse().getId()==id) {
-					System.out.println(courseTeacherList.get(i).getTeacher().toString());
-				}else System.out.println("There are no Student enrolled in this course");
+				if (courseTeacherList.get(i).getCourse().getId()==courseId) {
+					designateTeacher.add(courseTeacherList.get(i).getTeacher());
+				}
 			}
+	     return designateTeacher;
 		}
+		
+		public static List <Course> findCourseByTeacher(int teacherId) {
+			
+			List<Course> taughtCourse = new ArrayList<>();
+			for (int i=0; i <courseTeacherList.size();i++ ) {
+				if (courseTeacherList.get(i).getTeacher().getId()==teacherId) {
+					taughtCourse.add(courseTeacherList.get(i).getCourse());
+				}
+			}
+			return taughtCourse;
+		}
+		
 		
 
 

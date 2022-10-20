@@ -1,6 +1,6 @@
 package it.unipd.University_automation_system;
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) {
 		
@@ -26,24 +26,13 @@ public class main {
 		CourseStudentServices.addCourseStudent(math , obai);
 		CourseStudentServices.addCourseStudent(math , odai);
 		CourseStudentServices.addCourseStudent(math , iyad);
-		
-		CourseStudentServices.searchStudent(math);
-		
+				
 		CourseTeacherServices.addCourseTeacher(math, jack);
 		CourseTeacherServices.addCourseTeacher(foundationCS, alex);
 		CourseTeacherServices.addCourseTeacher(dataStructures1, john);
 		CourseTeacherServices.addCourseTeacher(dataStructures2, john);
 		CourseTeacherServices.addCourseTeacher(dataStructures2, alex);
 		
-		CourseTeacherServices.searchTeacher(dataStructures2);
-		
-		
-		
-		
-		
-		
-		
-
 	}
 
 }
