@@ -33,6 +33,10 @@ public class Teacher {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String toString() {
+		return "id: "+id+ " First name: " +FIRST_NAME + " last name : "+LAST_NAME+ " Email: " + email;
+	}
 
 
 

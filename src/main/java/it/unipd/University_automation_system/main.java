@@ -17,14 +17,19 @@ public class main {
 		Teacher john = new Teacher (012,"John", "Snow","john@gmail.com");
 		Teacher jack = new Teacher (013,"Jack", "Black","jack@gmail.com");
 		
-		CourseStudent fcsObai = new CourseStudent (foundationCS , obai);
-		CourseStudent fOdai = new CourseStudent (foundationCS , odai);
-		CourseStudent dataObai = new CourseStudent (dataStructures1 , obai);
-		CourseStudent dataOdai = new CourseStudent (dataStructures2 , odai);
-		CourseStudent dataIyad = new CourseStudent (dataStructures2 , iyad);
-		CourseStudent mathObai = new CourseStudent (math , obai);
-		CourseStudent mathOdai = new CourseStudent (math , odai);
-		CourseStudent mathIyad = new CourseStudent (math , iyad);
+
+		CourseStudentServices.addCourseStudent(foundationCS,obai);
+		CourseStudentServices.addCourseStudent(foundationCS,odai);
+		CourseStudentServices.addCourseStudent(dataStructures1,obai);
+		CourseStudentServices.addCourseStudent(dataStructures2 , odai);
+		CourseStudentServices.addCourseStudent(dataStructures2 , iyad);
+		CourseStudentServices.addCourseStudent(math , obai);
+		CourseStudentServices.addCourseStudent(math , odai);
+		CourseStudentServices.addCourseStudent(math , iyad);
+		
+		CourseStudentServices.searchStudent(math);
+		
+		
 		
 		
 		
