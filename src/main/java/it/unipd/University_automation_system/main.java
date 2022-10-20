@@ -29,6 +29,14 @@ public class main {
 		
 		CourseStudentServices.searchStudent(math);
 		
+		CourseTeacherServices.addCourseTeacher(math, jack);
+		CourseTeacherServices.addCourseTeacher(foundationCS, alex);
+		CourseTeacherServices.addCourseTeacher(dataStructures1, john);
+		CourseTeacherServices.addCourseTeacher(dataStructures2, john);
+		CourseTeacherServices.addCourseTeacher(dataStructures2, alex);
+		
+		CourseTeacherServices.searchTeacher(dataStructures2);
+		
 		
 		
 		

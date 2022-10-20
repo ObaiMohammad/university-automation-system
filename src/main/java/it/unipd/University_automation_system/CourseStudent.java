@@ -18,8 +18,4 @@ public class CourseStudent {
 		return this.student;
 	}
 
-
-
-
-
 }
