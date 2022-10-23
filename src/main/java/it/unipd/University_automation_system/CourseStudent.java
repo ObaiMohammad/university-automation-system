@@ -3,12 +3,11 @@ package it.unipd.University_automation_system;
 public class CourseStudent {
 	private Course course;
 	private Student student;
-	private int grade;
+	private Integer grade;
 
 	public CourseStudent (Course course,Student student) {
 		this.course = course;
 		this.student = student;
-
 	}
 	
 	public void setGrade(int grade) {

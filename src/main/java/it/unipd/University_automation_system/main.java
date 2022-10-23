@@ -33,6 +33,18 @@ public class Main {
 		CourseTeacherServices.addCourseTeacher(dataStructures2, john);
 		CourseTeacherServices.addCourseTeacher(dataStructures2, alex);
 		
+		
+		CourseStudentServices.setGradeOneLineSimplified(001,001,70);
+		CourseStudentServices.setGradeOneLineSimplified(002,001,80);
+		CourseStudentServices.setGradeOneLineSimplified(004,001,50);
+		
+		 System.out.println(CourseStudentServices.getGrade(001,001));
+		 
+		 BookletServices.getBooklet(001);
+		
+		
 	}
+
+
 
 }
