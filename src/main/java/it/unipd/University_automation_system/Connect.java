@@ -10,9 +10,11 @@ public class Connect {
     private static String user = "postgres";
     private static String password = "0000";
 
+   private static Connection cont = null;
+
+
     public static Connection connect(){
 
-        Connection cont = null;
 
         try {
             cont = DriverManager.getConnection(url,user,password);
@@ -20,7 +22,6 @@ public class Connect {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return cont;
     }
 
