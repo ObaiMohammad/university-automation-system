@@ -22,9 +22,9 @@ public class CourseStudentServices {
 		return null;
 	}
 
-	public static void setGradeOneLine (int teasheId,int courseId, int studentId, int studentGrade) {
+	public static void setGradeOneLine (int teacherId,int courseId, int studentId, int studentGrade) {
 		for (Teacher teacher :CourseTeacherServices.findTeacherByCourses(courseId)) {
-			if (teasheId==teacher.getId()) {
+			if (teacherId==teacher.getId()) {
 
 				List<CourseStudent> enrolledStudent =  courseStudentList.stream()
 						.filter(cs -> cs.getCourse().getId() == courseId)

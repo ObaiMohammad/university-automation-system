@@ -72,7 +72,6 @@ from (select t.id, first_name, last_name, email, c.id, title
 
 ---------------------------
 
-
 select student_id, course_id, title, grade, credits
 from exam_student
          join exams e on e.id = exam_student.exam_id
@@ -84,3 +83,12 @@ from exam_student
          join exams on exam_student.exam_id = exams.id
 where course_id = ?
   and student_id = ?;
+
+---------------------------
+
+select * from students where id = 2;
+
+
+select jsonb_agg(st)
+from (select * from students where id = ? )st;
+
