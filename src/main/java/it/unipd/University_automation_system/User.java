@@ -1,9 +1,16 @@
 package it.unipd.University_automation_system;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(as = Student.class)
+//@JsonDeserialize(as = Student.class)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.PROPERTY, property = "role") @JsonSubTypes({
+
+		@JsonSubTypes.Type(value = Student.class),
+		@JsonSubTypes.Type(value = Teacher.class)})
 
 public class User {
 

@@ -2,19 +2,16 @@ package it.unipd.University_automation_system;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import java.sql.SQLException;
-import java.util.List;
 
 public interface StudentRepository {
 
-    public void addStudent ( String firstName,String lastName, String email) throws SQLException;
+    public  void addStudent(String firstName, String lastName, String email) ;
 
-    public static Student getStudent(int id) {
-        return null;
-    }
+    public  Student getStudent(int id) ;
 
-    public void updateEmail (String email);
+    public  void updateEmail(int id, String email) ;
 
-    public void deleteStudent (int id);
 
-    }
+    public  void deleteStudent(int id) ;
+
+}

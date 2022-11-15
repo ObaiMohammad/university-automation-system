@@ -21,6 +21,9 @@ begin
 end;
 $$;
 
+call set_student_email(1 , 'ob');
+call set_student_email(2,'obai@gmail.com');
+
 --------------------------
 
 create or replace procedure set_grade (_student_id int, _exam_id int, _grade int )
@@ -35,7 +38,7 @@ $$;
 
 --------------------------
 
-create or replace procedure set_student_email (_id int,_credit int)
+create or replace procedure set_course_credit (_id int,_credit int)
     language plpgsql
 as $$
 begin
@@ -47,7 +50,6 @@ end;
 $$;
 
 --------------------------
-
 
 
 

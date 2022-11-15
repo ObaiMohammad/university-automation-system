@@ -6,29 +6,11 @@ import java.sql.SQLException;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 
-		StudentRepositoryImplementation.getStudent(2);
-
-//		Connect.connect();
-//
-//		String insertStudent = "insert into students(first_name, last_name, email) values (?, ?, ?);";
-//		PreparedStatement pst;
-//		try (Connection conn = Connect.connect()){
-//
-//			pst = conn.prepareStatement(insertStudent);
-//			pst.setString(1,"Ali");
-//			pst.setString(2,"Ali");
-//			pst.setString(3,"Ali@gmail.com");
-//			pst.executeUpdate();
-//
-//
-//		} catch (SQLException e) {
-//			throw new RuntimeException(e);
-//		}
-
+//		StudentRepositoryImplementation.getStudent(2);
+//		StudentRepositoryImplementation.updateEmail(2, "obai@gmail.com");
+//		StudentRepositoryImplementation. addStudent("Ahmad", "Mohammad","AhmadMohammad@g.com" );
 	}
-
-
 
 }

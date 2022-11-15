@@ -7,28 +7,31 @@ import java.sql.SQLException;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.*;
 
-public class StudentRepositoryImplementation implements StudentRepository{
+public class TeacherRepositoryImplementation implements TeacherRepository {
+
+
     @Override
-    public  void  addStudent(String firstName, String lastName, String email) {
+    public void addTeacher(String firstName, String lastName, String email) {
         PreparedStatement pst ;
-        String insertStudent = "insert into students(first_name, last_name, email) values (?, ?, ?);";
+        String insertTeacher = "insert into teachers(first_name, last_name, email) values (?, ?, ?);";
 
         try (Connection conn = Connect.connect()) {
-        pst = conn.prepareStatement(insertStudent);
-        pst.setString(1,firstName);
-        pst.setString(2,lastName);
-        pst.setString(3,email);
-        pst.executeUpdate();
-    }
+            pst = conn.prepareStatement(insertTeacher);
+            pst.setString(1,firstName);
+            pst.setString(2,lastName);
+            pst.setString(3,email);
+            pst.executeUpdate();
+        }
         catch (SQLException e){
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
-    public  Student getStudent(int id) {
+    public Teacher getTeacher(int id) {
         PreparedStatement pst ;
-        String selectStudent = "select to_jsonb(st) from (select * from students where id = ? )st;";
+        String selectStudent = "select to_jsonb(st) from (select * from teachers where id = ? )st;";
 
         try (Connection conn = Connect.connect()) {
             pst = conn.prepareStatement(selectStudent);
@@ -40,16 +43,15 @@ public class StudentRepositoryImplementation implements StudentRepository{
                 String jsonb = rs.getString("to_jsonb");
 
                 String target = "}";
-                String replacement = ", \"role\": \"Student\"}";
-                String student = jsonb.replace(target, replacement);
-                System.out.println( student);
+                String replacement = ", \"role\": \"Teacher\"}";
+                String teacher = jsonb.replace(target, replacement);
+                System.out.println( teacher);
 
                 ObjectMapper objectMapper = new ObjectMapper();
                 //Student std = objectMapper.readValue(jsonb, Student.class);
-                Student std =  objectMapper.reader().forType(Student.class).readValue(student);
-                return (Student) std;
+                Teacher tech =  objectMapper.reader().forType(Student.class).readValue(teacher);
+                return tech;
             }
-
         }
         catch (SQLException | JsonProcessingException e){
             throw new RuntimeException(e);
@@ -58,11 +60,10 @@ public class StudentRepositoryImplementation implements StudentRepository{
         return null;
     }
 
-
     @Override
-    public  void updateEmail(int id ,String email) {
+    public void updateEmail(int id, String email) {
         PreparedStatement pst ;
-        String insertStudent = "call set_student_email(?, ?);";
+        String insertStudent = "call set_teacher_email (?,?);";
 
         try (Connection conn = Connect.connect()) {
             pst = conn.prepareStatement(insertStudent);
@@ -74,13 +75,13 @@ public class StudentRepositoryImplementation implements StudentRepository{
         catch (SQLException e){
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
-    public  void deleteStudent(int id) {
-
+    public void deleteTeacher(int id) {
         PreparedStatement pst ;
-        String insertStudent = "call delete_student(?);";
+        String insertStudent = "call delete_teacher(?);";
 
         try (Connection conn = Connect.connect()) {
             pst = conn.prepareStatement(insertStudent);
@@ -91,7 +92,6 @@ public class StudentRepositoryImplementation implements StudentRepository{
         catch (SQLException e){
             throw new RuntimeException(e);
         }
+
     }
-
-
 }

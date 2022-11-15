@@ -2,8 +2,10 @@
 package it.unipd.University_automation_system;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonTypeName("Student")
 
 public class Student extends User {
 
