@@ -24,7 +24,7 @@ from get_student_grad(8, 5);
 
 ----------------------------------------------------
 
-create or replace function get_student_by_course(_course_id int)
+create or replace function get_student_by_course_bad(_course_id int)
     returns jsonb
     language plpgsql
 as
@@ -42,7 +42,13 @@ begin
 end;
 $$;
 
-create or replace function get_student_by_course_soft(_course_id int)
+-----------------------
+select *
+    from
+        get_student_by_course (2);
+------------------------
+
+create or replace function get_student_by_course(_course_id int)
     returns jsonb
     language plpgsql
 as
@@ -68,7 +74,7 @@ $$;
 
 
 select *
-from get_student_by_course_soft(8);
+from get_student_by_course_soft(2);
 
 ------------------------------
 
@@ -91,7 +97,7 @@ begin
 end ;
 $$;
 
-select * from get_course_by_student(2);
+select * from get_course_by_student(5);
 
 ------------------------------------
 
@@ -118,3 +124,56 @@ where student_id = 2 and exam_id = 4 ;
 
 call set_grade(5,2,95);
 
+-------------------------------------
+
+
+create or replace function get_teacher_by_course(_course_id int)
+    returns jsonb
+    language plpgsql
+as
+$$
+declare
+    teachers jsonb;
+    _id int;
+begin
+    select id into _id from courses where id = _course_id;
+    if _id is null then
+        return null;
+    else
+        select coalesce(jsonb_agg(to_jsonb(tch)), jsonb_build_array())
+        into teachers
+        from (select tch
+              from teachers tch
+                       join course_student cs on tch.id = cs.student_id
+              where course_id = _course_id) std;
+        return teachers;
+    end if;
+end;
+$$;
+
+
+select *
+from get_student_by_course_soft(2);
+
+------------------------------
+
+create or replace function get_course_by_teacher (_teacher_id int)
+    returns jsonb
+    language plpgsql
+as $$
+declare
+    _id int;
+    cs jsonb;
+
+begin
+    select coalesce( jsonb_agg(ct),jsonb_build_array())
+    into cs
+    from (select c.id,c.title,c.credits
+          from courses c
+          join course_teacher t on c.id = t.course_id
+          where teacher_id = _teacher_id) ct;
+    return cs;
+end ;
+$$;
+
+select * from get_course_by_teacher(1);

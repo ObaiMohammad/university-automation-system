@@ -288,3 +288,14 @@ values (5 ,8, 67);
 ---------------------------
 delete from exam_student where student_id = 5 and exam_id = 3;
 
+---------------------------
+
+create or replace procedure add_exam_student (_exam_id  int, _student_id int)
+    language plpgsql
+as
+$$
+BEGIN
+    insert into  exam_student (exam_id, student_id, grade)
+    values (_exam_id,_student_id);
+end;
+$$;
